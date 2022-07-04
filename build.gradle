@@ -14,8 +14,10 @@ repositories {
 }
 
 dependencies {
-	compileOnly 'com.sparkjava:spark-core:2.9.3'
-    implementation 'com.sparkjava:spark-template-thymeleaf:2.7.1'
+	implementation 'com.sparkjava:spark-core:2.9.3'
+    implementation ('com.sparkjava:spark-template-thymeleaf:2.7.1') {
+         exclude group : 'sparkjava:spark-core' , module: 'sparkjava:spark-core'
+    }
     implementation 'org.projectlombok:lombok:1.18.24'
     implementation 'org.slf4j:slf4j-simple:1.7.36'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.3'
