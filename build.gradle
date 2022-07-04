@@ -26,11 +26,6 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
-jar {
-	manifest {
-		attributes(
-				'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
-				'Main-Class': 'hello.HelloWorld'
-		)
-	}
+tasks.jar {
+	manifest.attributes["Main-Class"] = "com.example.Main"
 }
