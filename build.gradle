@@ -13,8 +13,20 @@ repositories {
     mavenCentral()
 }
 
+mainClassName = "com.example.Main"
+
+jar {
+    manifest {
+        attributes "Main-Class": "$mainClassName"
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
 dependencies {
-	implementation 'com.sparkjava:spark-core:2.9.3'
+	compileOnly  'com.sparkjava:spark-core:2.9.3'
     implementation ('com.sparkjava:spark-template-thymeleaf:2.7.1') {
          exclude group : 'sparkjava:spark-core' , module: 'sparkjava:spark-core'
     }
