@@ -4,7 +4,7 @@ ARG GRADLE_VERSION=jdk11
 FROM gradle:$GRADLE_VERSION as builder
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
-RUN gradle build --no-daemon
+RUN gradle clean build --no-daemon
 RUN JAR_FILE=$(ls /home/gradle/src/build/libs/ | grep jar | grep -v plain) && \
     cp /home/gradle/src/build/libs/$JAR_FILE /home/gradle/src/app.jar com.example.Main
 
