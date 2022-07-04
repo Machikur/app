@@ -20,7 +20,7 @@ jar {
         attributes "Main-Class": "$mainClassName"
     }
 
-    from {
+    doFirst {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
